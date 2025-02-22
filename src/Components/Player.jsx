@@ -1,5 +1,5 @@
 import {useState} from "react";
-export default function Player({initialName,symbol,changeName,isActive}){
+export default function Player({initialName,symbol,changeName,isActive,saveName}){
     const[name,setName]=useState(initialName);
 
     const [isEditing,setIsEditing]=useState(false);
@@ -12,8 +12,12 @@ export default function Player({initialName,symbol,changeName,isActive}){
         }
           <span className="player-symbol">{symbol}</span>
         </span>
-        <button onClick={()=>
+        <button onClick={()=>{
+        if(isEditing)
+        saveName(symbol,name);
+          
         setIsEditing(prev=>!prev)
+        }
         }>{isEditing?"Save":"Edit"}</button>
         </li>
     )
