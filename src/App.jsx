@@ -4,6 +4,19 @@ import Log from "./Components/Log";
 import { useState } from "react";
 import GameOver from "./Components/GameOver";
 import { winningCombinations } from "./winning-combinations";
+import deriveWinner from "./utils/deriveWinner";
+import deriveGameBoard from "./utils/deriveGameBoard";
+
+const INITIAL_GAME_BOARD = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null],
+];
+const PLAYERS = {
+  X: "Player1",
+  Y: "Player2",
+};
+
 function deriveActivePlayer(gameTurns) {
   let currentPlayer = "X";
   if (gameTurns.length > 0 && gameTurns[0].currentPlayer === "X") {
@@ -11,28 +24,14 @@ function deriveActivePlayer(gameTurns) {
   }
   return currentPlayer;
 }
-const initialBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
 
 function App() {
-  const [players, setPlayers] = useState({
-    X: "Player1",
-    O: "Player2",
-  });
+  const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
-  const gameBoard = [...initialBoard.map((array) => [...array])];
+  const gameBoard = deriveGameBoard(INITIAL_GAME_BOARD, gameTurns);
+
+  let winner = deriveWinner(gameBoard);
   const activePlayer = deriveActivePlayer(gameTurns);
-
-  for (const turn of gameTurns) {
-    const { square, currentPlayer } = turn;
-    const { rowIndex, colIndex } = square;
-    gameBoard[rowIndex][colIndex] = currentPlayer;
-  }
-
-  let winner;
 
   let isDraw = gameTurns.length == 9 && !winner;
 
@@ -40,22 +39,6 @@ function App() {
     setGameTurns([]);
   };
 
-  for (let combination of winningCombinations) {
-    let firstSquareSymbol =
-      gameBoard[combination[0].row][combination[0].column];
-    let secondSquareSymbol =
-      gameBoard[combination[1].row][combination[1].column];
-    let thirdSquareSymbol =
-      gameBoard[combination[2].row][combination[2].column];
-
-    if (
-      firstSquareSymbol &&
-      firstSquareSymbol === secondSquareSymbol &&
-      firstSquareSymbol === thirdSquareSymbol
-    ) {
-      winner = firstSquareSymbol;
-    }
-  }
   const handleSavePlayerName = (symbol, name) => {
     setPlayers((prevPlayers) => {
       return {
@@ -82,13 +65,13 @@ function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initialName="player1"
+            initialName={PLAYERS.X}
             symbol="X"
             isActive={activePlayer === "X"}
             saveName={handleSavePlayerName}
           />
           <Player
-            initialName="player2"
+            initialName={PLAYERS.Y}
             symbol="O"
             saveName={handleSavePlayerName}
             isActive={activePlayer === "O"}
