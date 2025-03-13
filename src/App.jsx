@@ -40,10 +40,11 @@ function App() {
   };
 
   const handleSavePlayerName = (symbol, name) => {
+   
     setPlayers((prevPlayers) => {
       return {
         ...prevPlayers,
-        [symbol]: name,
+        [symbol]:name,
       };
     });
   };

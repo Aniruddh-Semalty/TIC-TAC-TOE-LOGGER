@@ -17,7 +17,7 @@ export default function Player({
           <input
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value.slice(0,12))}
           />
         ) : (
           <span className="player-name">{name}</span>
@@ -26,6 +26,7 @@ export default function Player({
       </span>
       <button
         onClick={() => {
+         
           if (isEditing) saveName(symbol, name);
 
           setIsEditing((prev) => !prev);
