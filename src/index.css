@@ -27,7 +27,7 @@ body {
   background-repeat: repeat;
   background-size: 100% 100%, 30% 30%, 100% 100%;
   min-height: 110rem;
-  margin:0;
+  margin: 0;
 }
 
 header {
@@ -351,75 +351,75 @@ ol {
   }
 }
 
-@media screen and (max-width:600px)
-{
-#game-container{
-  width:100vw;
- 
-}
-#game-board{
-  display: flex;
-  flex-wrap:wrap;
-  justify-content: center;
-  gap:1rem;
-  margin:2rem 0;
-  flex-direction: column;
-}
-#game-board ol {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2px;
-  padding: 2px;
-}
-#game-board button {
-  width: 6rem;
-  height: 6rem;
-  border: none;
-  background: #aca788;
-  color: #3f3b00;
-  font-size: 3rem;
-  cursor: pointer;
-  font-family: "Caprasimo", cursive;
-  padding: 1rem;
-}
-#log li{
-  font-size: 20px;
-}
-header img{
-width:4rem;
-}
-h1{
-  font-size: 2rem;
-}
-#players{
-  margin:0;
-}
-#players.highlight-player li.active {
- border-radius:10px;
-}
-.player-name {
+@media screen and (max-width: 600px) {
+  #game-container {
+    width: 100vw;
+  }
+  #game-board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-direction: column;
+  }
+  #game-board ol {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2px;
+    padding: 2px;
+  }
+  #game-board button {
+    width: 6rem;
+    height: 6rem;
+    border: none;
+    background: #aca788;
+    color: #3f3b00;
+    font-size: 3rem;
+    cursor: pointer;
+    font-family: "Caprasimo", cursive;
+    padding: 1rem;
+  }
+  #log li {
+    font-size: 20px;
+  }
+  header img {
+    width: 4rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  #players {
+    margin: 0;
+  }
+  #players.highlight-player li.active {
+    border-radius: 10px;
+  }
+  .player-name {
+    width: 7rem;
+    font-size: 10px;
+  }
+  .player {
+    padding: 0;
+  }
+  .player input {
+    width: 7rem;
+  }
+  #game-container {
+    margin: 0 auto;
+  }
+  .player-symbol {
+    font-size: 12px;
+  }
+  #players button {
+    font-size: 10px;
+  }
+  #players button {
+    font-size: 12px;
 
-  width: 7rem;
-  
+    padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+    text-align: center;
+  }
 }
-.player {
-  padding: 0;
-}
-.player input {
-  
-  width: 7rem;
-
-}
-#game-container {
-
-  margin: 0 auto;
-  
-}
-
-
-}
-
-
-
